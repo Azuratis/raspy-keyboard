@@ -13,6 +13,16 @@ public:
   RingBus__class(){}
 } RingBus;
 
+// <·> <·> <·> RB-Serial <·> <·> <·> //
+const class SerialRB__class
+: public sys::dev::ringbus::Device{
+
+protected:
+  
+public:
+  SerialRB__class(){}
+} SerialRB;
+
 /*-----------------------------------------------------------------*\
 |* <·> <·> <·> <·> <·>  Main Function Segment  <·> <·> <·> <·> <·> *|
 \*-----------------------------------------------------------------*/
