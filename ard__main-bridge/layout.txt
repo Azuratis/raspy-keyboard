@@ -1,0 +1,36 @@
+[( view in monospaced )]
+
+
+Communication Pins:
+  Pin 01 : TX0  -> RingBus_ext_Tx
+  Pin 00 : RX0 <-  RingBus_ext_Rx
+  Pin 14 : TX3  -> RS232_Tx
+  Pin 15 : RX3 <-  RS232_Rx
+  Pin 16 : TX2  -> MIDI_Tx
+  Pin 17 : RX2 <-  MIDI_Rx
+  Pin 18 : TX1  -> RingBus_int_Tx
+  Pin 19 : RX1 <-  RingBus_int_Rx
+  Pin 20 : SDA <->
+  Pin 21 : SCL <-> 
+
+Digital Pins:    
+                       V+ ·'''· V+
+  Parallel_Port_D0 <-> 22 ·'''· 23 <-> Parallel_Port_D1
+  Parallel_Port_D2 <-> 24 · P · 25 <-> Parallel_Port_D3
+  Parallel_Port_D4 <-> 26 · A · 27 <-> Parallel_Port_D5
+  Parallel_Port_D6 <-> 28 ·...· 29 <-> Parallel_Port_D7
+                       30 ·   · 31
+                       32 ·   · 33
+                       34 ·   · 35
+                       36 ·   · 37
+                       38 ·   · 39
+                       40 ·   · 41
+                       42 ·   · 43
+                       44 ·   · 45
+                       46 ·   · 47
+                       48 ·   · 49
+                       50 ·   · 51
+                       52 ·...· 53
+                       V- ·...· V-
+
+

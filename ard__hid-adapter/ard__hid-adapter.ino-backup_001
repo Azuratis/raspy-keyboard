@@ -1,0 +1,74 @@
+#include "system/ring-bus.hpp"
+#include "values.hpp"
+
+const class SerialRB__class
+: public sys::dev::RingBus::Device{
+ 
+  sys::dev::RingBus::Message* msg; 
+protected:
+  bool ready( uint8_t id[6] ){
+    return id[0] == 'S'
+        && id[1] == 'e'
+        && id[2] == 'r'
+        && id[3] == 'i'
+        && id[4] == 'a'
+        && id[5] == 'l' ;
+  }
+  void begin( void ){}
+  void write( uint8_t b ){ Serial.write(b); }
+  void end( void ){ Serial.write('\n'); }
+
+public:
+  SerialRB__class(){}
+} SerialRB;
+
+
+
+const class HidDevice__class
+: public sys::dev::RingBus::Device{
+
+protected:
+  bool ready( uint8_t id[6] ){
+    return id[0] == 'H'
+        && id[1] == 'i'
+        && id[2] == 'd'
+        && id[3] == 'D'
+        && id[4] == 'e'
+        && id[5] == 'v' ;
+  }
+  void begin( void ){}
+  void write( uint8_t ){}
+  void end( void ){}
+public:
+  HidDevice__class(){}
+} HidDevice;
+
+
+
+const class RingBus__class
+: public sys::dev::RingBus::Port{
+
+protected:
+  void write( uint8_t b ){ Serial1.write(b); delay(1); }
+  bool available( void ){ return Serial1.available(); }
+  uint8_t read( void ){ return Serial1.read(); }
+
+public:
+  RingBus__class(){}
+} RingBus;
+
+//->   <·>   <·>   <·>   <·>   <·>    <---->  MAIN METHOD <---->   <·>   <·>   <·>   <·>   <·>   <-//
+
+void setup(){
+  Serial.begin( STDIO__BAUD );
+  Serial1.begin( RING_BUS__BAUD );
+  while( !Serial || !Serial1 ) yield();
+
+  RingBus.setup();
+  SerialRB.setup();
+}
+
+void loop(){
+  RingBus.loop();
+  SerialRB.loop();
+}

@@ -9,9 +9,10 @@ echo "
 
 while [ true ]
 do
-  sleep 10
   clear
-  ls -l --ignore=node_modules $2
-  ls -l --ignore=node_modules res__system/
+  ls -1shp --ignore=node_modules $2
+  ls -1shp --ignore=node_modules res__system
+  echo "---------------------------------"/
   arduino-cli compile -b $1 $2
+  sleep 25
 done
