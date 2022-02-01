@@ -1,0 +1,13 @@
+{ 
+  "ring-bus": {
+    "target-port": "Serial1",
+    "target-baud": 115200,
+    "devices": [{
+      "name": "Serial",
+      "mask": "001",
+      "actions": [{
+
+      }]
+    }]
+  }
+}
